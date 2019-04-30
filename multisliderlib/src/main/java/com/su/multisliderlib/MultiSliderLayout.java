@@ -444,15 +444,18 @@ public class MultiSliderLayout extends RelativeLayout {
                     if (touchX < left_spanWidth) {
                         return leftViews.get(leftIndex - 1).dispatchTouchEvent(event);
                     }
-                } else if (isRightMenuShow) {
+                }
+                if (isRightMenuShow) {
                     if (touchX > screenWidth - right_spanWidth) {
-                        //return rightViews.get(rightIndex - 1).dispatchTouchEvent(event);
+                        return rightViews.get(rightIndex - 1).dispatchTouchEvent(event);
                     }
-                } else if (isTopMenuShow) {
+                }
+                if (isTopMenuShow) {
                     if (touchY < top_spanHeight) {
                         return topViews.get(topIndex - 1).dispatchTouchEvent(event);
                     }
-                } else if (isBottomMenuShow) {
+                }
+                if (isBottomMenuShow) {
                     if (touchY > screenHeight - bottom_spanHeight) {
                         return bottomViews.get(bottomIndex - 1).dispatchTouchEvent(event);
                     }
@@ -469,7 +472,8 @@ public class MultiSliderLayout extends RelativeLayout {
                     if (Math.abs(dx) > Math.abs(dy)) {//横向滑动
                         if (isTopMenuShow) {
                             return topViews.get(topIndex - 1).dispatchTouchEvent(event);
-                        } else if (isBottomMenuShow) {
+                        }
+                        if (isBottomMenuShow) {
                             return bottomViews.get(bottomIndex - 1).dispatchTouchEvent(event);
                         }
                         x_offset = x_offset + dx;
@@ -500,7 +504,8 @@ public class MultiSliderLayout extends RelativeLayout {
                                 return false;
                             }
                             return leftViews.get(leftIndex - 1).dispatchTouchEvent(event);
-                        } else if (isRightMenuShow) {
+                        }
+                        if (isRightMenuShow) {
                             if (touchX < screenWidth - right_spanWidth) {
                                 return false;
                             }
@@ -575,7 +580,7 @@ public class MultiSliderLayout extends RelativeLayout {
                 touchY = 0;
                 dx = 0;
                 dy = 0;
-                return false;
+                break;
         }
         return super.dispatchTouchEvent(event);
     }
@@ -608,7 +613,8 @@ public class MultiSliderLayout extends RelativeLayout {
                 leftIndex = i + 1;
                 if (multiSliderListener != null && leftIndex != 0 && lastInd != leftIndex)
                     multiSliderListener.onMenuSelected(MenuType.Left, leftIndex);//菜单选择
-            } else if (-x_offset <= -spanWidth * (i) && -x_offset > -spanWidth * (i + 0.5)) {
+            }
+            if (-x_offset <= -spanWidth * (i) && -x_offset > -spanWidth * (i + 0.5)) {
                 int lastInd = leftIndex;
                 leftIndex = i;
                 if (multiSliderListener != null && leftIndex != 0 && lastInd != leftIndex)
@@ -622,7 +628,8 @@ public class MultiSliderLayout extends RelativeLayout {
                 rightIndex = i + 1;
                 if (multiSliderListener != null && rightIndex != 0 && lastInd != rightIndex)
                     multiSliderListener.onMenuSelected(MenuType.Right, rightIndex);//菜单选择
-            } else if (-x_offset >= spanWidth * (i) && -x_offset < spanWidth * (i + 0.5)) {
+            }
+            if (-x_offset >= spanWidth * (i) && -x_offset < spanWidth * (i + 0.5)) {
                 int lastInd = rightIndex;
                 rightIndex = i;
                 if (multiSliderListener != null && rightIndex != 0 && lastInd != rightIndex)
@@ -636,7 +643,8 @@ public class MultiSliderLayout extends RelativeLayout {
                 topIndex = i + 1;
                 if (multiSliderListener != null && topIndex != 0 && lastInd != topIndex)
                     multiSliderListener.onMenuSelected(MenuType.Top, topIndex);//菜单选择
-            } else if (-y_offset <= -spanHeight * (i) && -y_offset > -spanHeight * (i + 0.5)) {
+            }
+            if (-y_offset <= -spanHeight * (i) && -y_offset > -spanHeight * (i + 0.5)) {
                 int lastInd = topIndex;
                 topIndex = i;
                 if (multiSliderListener != null && topIndex != 0 && lastInd != topIndex)
@@ -650,7 +658,8 @@ public class MultiSliderLayout extends RelativeLayout {
                 bottomIndex = i + 1;
                 if (multiSliderListener != null && bottomIndex != 0 && lastInd != bottomIndex)
                     multiSliderListener.onMenuSelected(MenuType.Bottom, bottomIndex);//菜单选择
-            } else if (-y_offset >= spanHeight * (i) && -y_offset < spanHeight * (i + 0.5)) {
+            }
+            if (-y_offset >= spanHeight * (i) && -y_offset < spanHeight * (i + 0.5)) {
                 int lastInd = bottomIndex;
                 bottomIndex = i;
                 if (multiSliderListener != null && bottomIndex != 0 && lastInd != bottomIndex)
